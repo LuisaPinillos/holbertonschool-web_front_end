@@ -23,3 +23,5 @@
 - Your code should be W3C compliant and validate with W3C-Validator
 
 ## End goal of the project
+
+![b9a220ba79af9ede6fc5](https://user-images.githubusercontent.com/85373056/182491330-3a7ce29b-3324-434b-a8b9-9c4a0956d0a1.png)
