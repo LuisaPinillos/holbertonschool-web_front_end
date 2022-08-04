@@ -20,3 +20,5 @@
 - All your files should start by a comment describing the task
 - A README.md file, at the root of the folder of the project, is mandatory
 - The length of your files will be tested using wc
+
+![9936ba361a3962278900](https://user-images.githubusercontent.com/85373056/182878332-2781cf5b-1977-4f24-bacd-9b2d78b763d7.jpg)
