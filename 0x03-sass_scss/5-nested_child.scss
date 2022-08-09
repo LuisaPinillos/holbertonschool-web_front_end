@@ -1,0 +1,11 @@
+/* Apply Nest with a class */
+
+body {
+    color: #3D3D3D;
+
+    > {
+        .red {
+            color: #FF0000;
+        }
+    }
+}
