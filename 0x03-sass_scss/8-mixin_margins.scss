@@ -7,6 +7,9 @@
     margin-left: $margin-size;
 }
 
+/* call the margin mixin with @include and
+the size of the variable margin-size */
+
 body {
     @include margin(10px);
 }
