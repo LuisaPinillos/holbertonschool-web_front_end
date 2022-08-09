@@ -1,0 +1,16 @@
+/* Use mixin for margin left and right */
+/* $margin-size is a variable that can change
+    in the diferent tags */
+
+@mixin margin ($margin-size) {
+    margin-right: $margin-size;
+    margin-left: $margin-size;
+}
+
+body {
+    @include margin(10px);
+}
+
+div {
+    @include margin(15px);
+}
