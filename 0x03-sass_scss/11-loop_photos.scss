@@ -1,0 +1,13 @@
+/* Sass file that creates a class for each name in the list $list-names
+and assigns the background image based on the name */
+
+@import '11-photos';
+
+/* This rule add an image for each iteration in the photo class
+$name is the iterator in $list-names */
+
+@each $name in $list-names {
+    .photo #{$name} {
+        background: image-url("photos/$name.jpg") no-repeat;
+    }
+}
