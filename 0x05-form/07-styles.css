@@ -1007,13 +1007,13 @@ textarea:valid:not(:placeholder-shown) {
 
 .form-search {
     display: block;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     position: relative;
 }
 
 .form-search .search-button {
     display: inline-block;
-    background-color: transparent;
+    background: transparent;
     border: 0;
     margin: 0;
     padding: 0;
@@ -1035,7 +1035,7 @@ textarea:valid:not(:placeholder-shown) {
     position: absolute;
     width: 0;
     right: 0;
-    background-color: none;
+    background: none;
     cursor: pointer;
     z-index: 3;
     transition: width 0.4s cubic-bezier(0, 0.795, 0, 1);
