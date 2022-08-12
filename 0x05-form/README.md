@@ -13,3 +13,7 @@
 - Allowed editors: vi, vim, emacs
 - A README.md at the root of the project directory is mandatory
 - HTML and CSS have been rendered on Chrome 78 or more.
+
+## End goal of the project
+
+![form](https://user-images.githubusercontent.com/85373056/184282115-1b6e579b-6106-4543-8961-3d792322729e.png)
