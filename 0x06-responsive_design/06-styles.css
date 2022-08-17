@@ -732,7 +732,7 @@ ul.row {
 }
 
 @media screen and (max-width: 767px) {
-    .row {
+    .section-latest-news .row {
         flex-direction: column;
     }
 }
