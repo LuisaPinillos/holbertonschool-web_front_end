@@ -811,6 +811,7 @@ ul.row {
 /* Card WORK
       ============================= */
 
+
 .card-work .card-outer {
     position: relative;
     overflow: hidden;
@@ -861,133 +862,18 @@ ul.row {
     left: 0;
     right: 0;
     bottom: 0;
-    content: '';
+    content: "";
 }
 
-.card-work .card-little a {
+.card-work .card-title a {
     opacity: 0;
 }
 
-.card-work .card-title a:focus, .card-work:hover .card-title a {
+.card-work .card-title a:focus,
+.card-work:hover .card-title a {
     opacity: 1;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-}
-
-@media only screen and (max-width: 767px) {
-
-    .card-work .card-inner {
-        --text-color: var(--color-white);
-        position: relative;
-    }
-
-    .card-work .card-title {
-        opacity: 1;
-    }
-
-    .card-work .card-title a {
-        display: block;
-        padding: 2rem 1rem 0 1rem;
-    }
-
-    .card-work:hover .card-inner {
-        background-color: transparent;
-    }
-
-    .card-work:hover .card-image {
-        transform: none;
-    }
-}
-
-/* Card SERVICES
-      ============================= */
-
-.card-services .card-title {
-    margin: 0;
-}
-
-.card-services a {
-    display: block;
-    padding: 2rem;
-    background-color: var(--color-light-grey);
-}
-
-.card-services a:hover {
-    color: var(--color-white);
-    background: var(--color-primary);
-    text-decoration: none;
-    transition-duration: 0.3s;
-    transition-property: color, background-color;
-}
-
-/* Card TESTIMONIAL
-      ============================= */
-
-.card-testimonial {
-    text-align: center;
-}
-
-.card-testimonial .card-avatar {
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
-}
-
-.card-testimonial .card-quote cite {
-    display: block;
-    padding-top: 1rem;
-    color: var(--color-primary);
-}
-
-.card-testimonial .card-quote {
-    position: relative;
-}
-
-.card-testimonial .card-quote::before {
-    content: '\201C';
-    position: absolute;
-    top: -4.5rem;
-    left: -1rem;
-    color: #efeded;
-    font-size: 10rem;
-    z-index: -1;
-}
-
-/*** ARTICLE PAGE ***/
-
-/* Section HERO (article)
-      ============================= */
-
-.hero-article {
-    background-size: 150rem 100rem;
-    background-position: 50% 0;
-}
-
-.hero-article::before {
-    content: '';
-    background: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 0;
-}
-
-.hero-article .section-inner {
-    text-align: center;
-    align-items: center;
-    min-height: 40vh;
-}
-
-.hero-article .section-body {
-    position: relative;
-    padding: 7rem 0 0;
-    z-index: 2;
-}
-
-.main-article {
-    padding: 5rem 0;
 }
 
 /* Post
