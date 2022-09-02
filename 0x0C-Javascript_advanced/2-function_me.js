@@ -2,10 +2,9 @@
 
 function welcomeMessage(fullName) {
 
-    function displayFullName() {
+    return function displayFullName() {
         alert(`Welcome ${fullName}`);
     }
-    return displayFullName;
 }
 
 const guillaume = welcomeMessage('Guillaume');
