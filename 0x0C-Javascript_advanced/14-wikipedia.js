@@ -1,3 +1,5 @@
+//Simple callback
+
 function createElement(data) {
     let p = document.createElement("p");
     p.innerText = data;
