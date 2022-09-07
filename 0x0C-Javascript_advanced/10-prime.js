@@ -25,4 +25,4 @@ for (let i = 0; i < 100; i++) {
 }
 let Tfinish = performance.now();
 
-console.log(`Execution time of printing countPrimeNumbers was ${Tfinish - Tinit} milliseconds.`)
+console.log(`Execution time of calculating prime numbers 100 times was ${Tfinish - Tinit} milliseconds.`)
