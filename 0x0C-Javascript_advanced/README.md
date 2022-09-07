@@ -1,4 +1,6 @@
-Learning Objectives
+# Javascript Advanced
+
+## Learning Objectives
 
 - What is lexical scoping in JavaScript
 - What is closure in JavaScript
@@ -8,7 +10,8 @@ Learning Objectives
 - The execution stack order with JavaScript
 - How to use binding
 - How to use callbacks
-Requirements
+
+## Requirements
 
 - Allowed editors: vi, vim, emacs, Visual Studio Code
 - All your files should end with a new line
