@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 7</title>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function createSearchForm() {
+                    //Create a search input and a button for submit the search's value
+                    $("body").append(`<input type="text">`);
+                    $("body").append(`<input type="submit" value="Submit">`)
+
+                    $("input:nth-of-type(2)").click(function() {
+                        text = $("input").val();
+
+                        if(text) {
+                            queryWikipedia(text);
+                        }
+                    });
+
+                    $("body").append("<ul></ul>");
+                }
+
+                function addNewArticle(id, title, snippet) {
+                    //Function that craetes a list of the query results
+                    $listElem = $(`
+                        <li>
+                            <p><span>${id} - <b>${title}</b></span></p>
+                            <p>${snippet}</p>
+                        </li>
+                    `);
+
+                    $("ul").append($listElem);
+                }
+
+                function queryWikipedia(search) {
+                    //It does the query and get the json response
+                    $.ajax ({
+                        url: "https://en.wikipedia.org/w/api.php" + "?origin=*",
+                        type: "GET", //comunication method
+                        data: {
+                            action: "query",
+		                    list: "search",
+		                    srsearch: search,
+		                    format: "json"
+                        },
+
+                        // petition response
+                        success: function(info) {
+                            if (info.query.search) {
+                                listResp = info.query.search;
+                                for (let index of listResp) {
+                                    addNewArticle(index.pageid, index.title, index.snippet);
+                                }
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                }
+                createSearchForm();
+            });
+        </script>
+    </body>
+
+</html>
