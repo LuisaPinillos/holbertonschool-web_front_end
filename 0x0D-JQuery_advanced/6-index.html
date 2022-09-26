@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 6</title>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function createFamilyTree() {
+                    //Function that creates a table
+                    var table = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    `
+                    $("body").append(table);
+                    $("table").append("<tbody></tbody>")
+                }
+
+                function addNewMember(firstname, lastname, position) {
+                    //Function that appends to the body of the table a new row with three cells
+                    //firstname, lastname and (x)
+                    var $row = $(`
+                        <tr>
+                            <td>${firstname}</td>
+                            <td>${lastname}</td>
+                        </tr>
+                    `);
+
+                    var $x = $(`
+                        <td>(x)</td>
+                    `);
+
+                    if (position === "before") {
+                        $("tbody").prepend($row);
+                        $row.append($x);
+                    } else {
+                        $("tbody").append($row);
+                        $row.append($x);
+                    }
+
+                    //On click on the third cell, it should remove the row
+                    $x.click(function () {
+                        $row.remove();
+                        $x.remove();
+                    });
+
+                    //The third cell have an orange background
+                    $x.css("background-color", "orange");
+                }
+
+                function createForm() {
+                    //Create two inputs a select and a submit button
+                    var $form = $(`<form></form>`);
+
+                    $("table").before("<input type='text'>");
+                    $("table").before("<input type='text'>");
+                    $("table").before(`
+                        <select>
+                            <option value="before">Before</option>
+                            <option value="after">After</option>
+                        </select>
+                    `);
+                    $("table").before(`<input type="submit" value="Submit">`);
+
+                    $("input:nth-of-type(3)").click(function(){
+                        //When the user clicks on the submit, it should call the function
+                        //addNewMember with the value of the two inputs and the value of the select element
+                        firstname = $("input").first().val();
+                        lastname = $("input:nth-of-type(2)").val();
+                        position = $("select").val();
+                        addNewMember(firstname, lastname, position);
+                    });
+                }
+                createFamilyTree();
+                createForm();
+            });
+        </script>
+    </body>
+
+</html>
