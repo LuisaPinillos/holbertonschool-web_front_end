@@ -11,35 +11,37 @@
     <body>
         <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
         <script type="application/javascript">
-            function createFamilyTree() {
-                //Function that generates the HTML tag and attach it to the page
-                const table = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Guillaume</td>
-                            <td>Salva</td>
-                        </tr>
-                        <tr>
-                            <td>Paulette</td>
-                            <td>Salva</td>
-                        </tr>
-                        <tr>
-                            <td>Antoine</td>
-                            <td>Salva</td>
-                        </tr>
-                    </tbody>
-                </table>
-                `;
-                $("body").append(table)
-            }
-            createFamilyTree();
+            $(document).ready(function() {
+                function createFamilyTree() {
+                    //Function that generates the HTML tag and attach it to the page
+                    const table = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Guillaume</td>
+                                <td>Salva</td>
+                            </tr>
+                            <tr>
+                                <td>Paulette</td>
+                                <td>Salva</td>
+                            </tr>
+                            <tr>
+                                <td>Antoine</td>
+                                <td>Salva</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    `;
+                    $("body").append(table)
+                }
+                createFamilyTree();
+            })
         </script>
     </body>
 
