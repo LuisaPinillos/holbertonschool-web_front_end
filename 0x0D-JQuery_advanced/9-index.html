@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 8</title>
+        <style>
+            .loading {
+                opacity: 0.2;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function createSearchForm() {
+                    //Create a search input and a button for submit the search's value
+                    $("body").append(`<input type="text">`);
+                    $("body").append(`<input type="submit" value="Submit">`)
+
+                    $("input:nth-of-type(2)").click(function() {
+                        text = $("input").val();
+
+                        if(text) {
+                            queryWikipedia(text);
+                        }
+                    });
+
+                    $("body").append("<ul></ul>");
+                    $("body").append("<ul id='pagination'></ul>")
+                }
+
+                function addNewArticle(id, title, snippet) {
+                    //Function that craetes a list of the query results
+                    $listElem = $(`
+                        <li>
+                            <p><span>${id} - <b>${title}</b></span></p>
+                            <p>${snippet}</p>
+                        </li>
+                    `);
+
+                    $("ul").first().append($listElem);
+                }
+
+                function queryWikipedia(search, offset = 0) {
+                    //It does the query and get the json response
+                    const itemsPerPage = 10;
+
+                    displayLoading(true);
+
+                    $.ajax ({
+                        url: "https://en.wikipedia.org/w/api.php" + "?origin=*",
+                        type: "GET", //comunication method
+                        data: {
+                            action: "query",
+		                    list: "search",
+		                    srsearch: search,
+		                    format: "json",
+                            sroffset: offset * 10,
+                            srlimit: itemsPerPage,
+                            srsort: "create_timestamp_desc"
+                        },
+
+                        // petition response
+                        success: function(info) {
+                            $("ul").first().empty();
+                            displayLoading(false);
+
+                            if (info.query.search) {
+                                listResp = info.query.search;
+                                for (let index of listResp) {
+                                    addNewArticle(index.pageid, index.title, index.snippet);
+                                }
+                            }
+                            if (info.query.searchinfo) {
+                                //When it receives the response from the API, call the function buildPagination
+                                numberOfItems = info.query.searchinfo.totalhits;
+                                buildPagination(numberOfItems, itemsPerPage, offset);
+                            }
+                        },
+                        error: function(error) {
+                            $("ul").first().empty();
+                            $("#pagination").empty();
+                            displayLoading(false);
+                            console.log(error);
+                        }
+                    });
+                }
+
+                function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+                    //When the function is called, reset the pagination list to an empty tag
+                    const $ul = $("#pagination");
+                    $ul.empty();
+
+                    for (let i = 1; i <= Math.floor(numberOfItems/itemsPerPage); i++) {
+                        //display the pagination
+                        $listItemPage = $(`<li>${i}</li>`).css({
+                            cursor: "pointer",
+                            "margin-left": "10px",
+                            display: "inline-block"
+                        });
+
+                        if (i === currentOffset + 1) {
+                            $listItemPage.css("font-weight", "bold");
+                        }
+
+                        $listItemPage.click(function() {
+                            //When clicking on a page number, it call the function queryWikipedia with the right offset
+                            queryWikipedia($("input").val(), i - 1);
+                        });
+
+                        $ul.append($listItemPage);
+                    }
+                }
+
+                function displayLoading(loading) {
+                    const $ul = $("ul").first();
+
+                    if(loading) {
+                        $ul.wrap("<div class='loading'></div>");
+                    } else {
+                        $ul.unwrap();
+                    }
+
+                }
+                createSearchForm();
+            });
+        </script>
+    </body>
+
+</html>
