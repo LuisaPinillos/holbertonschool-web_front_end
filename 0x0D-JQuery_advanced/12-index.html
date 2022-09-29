@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 12</title>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function addPostRow(data) {
+                    //It takes into argument data (object)
+                    $("body").append(`
+                        <p id="row-${data.id}">
+                            <span class="del-${data.id}">(delete)</span><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span>
+                        </p>
+                    `);
+
+                    $(`.del-${data-id}`).click(function() {
+                        deletePost(data.id);
+                    });
+                };
+
+                function listPosts() {
+                    //It query your local server on the posts endpoint
+                    const url = "http://localhost:3000/posts"
+                    $.get(url, function(result, status) {
+                        if (status === "success") {
+                            for (let i in result) {
+                                addPostRow(result[i]);
+                            }
+                        } else alert("Server Error");
+                    });
+                };
+
+                function buildForm() {
+                    //It appends to the body a form element
+                    $("body").append(`
+                        <form class="theForm">
+                            <label for="author">Author</label>
+                            <input type="text" id="author">
+                            <div>
+                                <label for="title">Title</label>
+                                <textarea id="title"></textarea>
+                            </div>
+                            <input class="ButtonSubmit" type="submit" value="Submit">
+                        </form>
+                    `);
+
+                    $(".ButtonSubmit").click(function (event) {
+                        //When clicking on the submit button, call the function sendForm
+                        event.preventDefault();
+                        sendForm();
+                        return false;
+                    });
+                }
+
+                function sendForm() {
+                    //It should create a data object and send a post query
+                    $(".theForm").append("<p>About to send the query to the API</p>")
+                    let data = {
+                        author: $("#author").val(),
+                        title: $("#title").val()
+                    };
+
+                    $.ajax ({
+                        type: "POST",
+                        url: "http://localhost:3000/posts",
+                        data: data,
+
+                        success: function(result) {
+                            addPostRow(result);
+                        },
+                        error: function() {
+                            alert("Error sending the POST query")
+                        }
+                    })
+                };
+
+                function deletePost(id){
+                    //Send a DELETE query to the posts endpoint with the id of the post
+
+                    $.ajax ({
+                        type: "DELETE",
+                        url: `http://localhost:3000/posts/${id}`,
+
+                        success: function () {
+                        $(`#row-${id}`).remove();
+                        },
+                        error: function () {
+                            alert("Post was not deleted")
+                        }
+                    })
+                }
+                listPosts();
+                buildForm();
+            });
+        </script>
+    </body>
+
+</html>
