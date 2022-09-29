@@ -16,7 +16,7 @@
                     //It takes into argument data (object)
                     $("body").append(`
                         <p><span>
-                            Post created with id ${data.id}, title: ${data.title}, author: ${data.title}
+                            Post created with id ${data.id}, title: ${data.title}, author: ${data.author}
                         </span></p>
                     `)
                 };
@@ -57,7 +57,7 @@
 
                 function sendForm() {
                     //It should create a data object and send a post query
-                    $(".theForm").after("<p>About to send the query to the API</p>")
+                    $(".theForm").append("<p>About to send the query to the API</p>")
                     let data = {
                         author: $("#author").val(),
                         title: $("#title").val()
