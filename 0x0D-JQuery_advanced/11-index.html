@@ -34,19 +34,21 @@
                 };
 
                 function buildForm() {
+                    //It appends to the body a form element
                     $("body").append(`
                         <form class="theForm">
                             <label for="author">Author</label>
                             <input type="text" id="author">
                             <div>
                                 <label for="title">Title</label>
-                                <input type="textarea" id="title">
+                                <textarea id="title"></textarea>
                             </div>
                             <input class="ButtonSubmit" type="submit" value="Submit">
                         </form>
                     `);
 
                     $(".ButtonSubmit").click(function (event) {
+                        //When clicking on the submit button, call the function sendForm
                         event.preventDefault();
                         sendForm();
                         return false;
@@ -54,6 +56,7 @@
                 }
 
                 function sendForm() {
+                    //It should create a data object and send a post query
                     $(".theForm").after("<p>About to send the query to the API</p>")
                     let data = {
                         author: $("#author").val(),
