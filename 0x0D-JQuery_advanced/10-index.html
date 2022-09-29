@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 10</title>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function addPostRow(data) {
+                    //It takes into argument data (object)
+                    $("body").append(`
+                        <p><span>
+                            Post created with id ${data.id}, title: ${data.title}, author: ${data.title}
+                        </span></p>
+                    `)
+                };
+                function listPosts() {
+                    //It query your local server on the posts endpoint
+                    const url = "http://localhost:3000/posts"
+                    $.get(url, function(result, status) {
+                        if (status === "success") {
+                            for (let i in result) {
+                                addPostRow(result[i]);
+                            }
+                        } else alert("Server Error");
+                    });
+                };
+                listPosts();
+            });
+        </script>
+    </body>
+
+</html>
