@@ -1,0 +1,114 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "The Lord of the Rings",
+      "author": "J. R. R. Tolkien",
+      "id": 2
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J. R. R. Tolkien",
+      "id": 3
+    },
+    {
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "id": 4
+    },
+    {
+      "title": "Harry Potter and the Philosopher’s Stone",
+      "author": "J. K. Rowling",
+      "id": 5
+    },
+    {
+      "title": "And Then There Were None",
+      "author": "Agatha Christie",
+      "id": 6
+    },
+    {
+      "title": "The Lion, the Witch and the Wardrobe",
+      "author": "C. S. Lewis",
+      "id": 7
+    },
+    {
+      "title": "The Theory of Everything",
+      "author": "Don Lincoln",
+      "id": 8
+    },
+    {
+      "title": "Caffeine: How Caffeine Created the Modern World",
+      "author": "Michael Pollan",
+      "id": 9
+    },
+    {
+      "title": "Exoplanet : The lives of Aldanze Genome",
+      "author": "Pedro Cartagena",
+      "id": 10
+    },
+    {
+      "title": "Mythology: Timeless Tales of Gods and Heroes",
+      "author": "Edith Hamilton",
+      "id": 11
+    },
+    {
+      "title": "Norse Mythology",
+      "author": "Neil Gaiman",
+      "id": 12
+    },
+    {
+      "title": "The United States of Cryptids: A Tour of American Myths and Monsters",
+      "author": "J. W. Ocker",
+      "id": 13
+    },
+    {
+      "title": "Gender Swapped Greek Myths",
+      "author": "Karrie Fransman",
+      "id": 14
+    },
+    {
+      "title": "The Book of Azrael (Gods and Monsters 1)",
+      "author": "Amber Nicole",
+      "id": 15
+    },
+    {
+      "title": "Caffeine: How Caffeine Created the Modern World",
+      "author": "Michael Pollan",
+      "id": 16
+    },
+    {
+      "title": "One Little Lie: A Thrilling Suspense Novel",
+      "author": "Christopher Greyson",
+      "id": 17
+    },
+    {
+      "title": "Fairy Tale",
+      "author": "Stephen King",
+      "id": 18
+    },
+    {
+      "title": "If It Bleeds",
+      "author": "Stephen King",
+      "id": 19
+    },
+    {
+      "title": "Billy Summers",
+      "author": "Stephen King",
+      "id": 20
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
