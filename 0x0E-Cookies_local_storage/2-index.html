@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-index</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input id="inputName" type="text" placeholder="Firstname">
+    <input id="inputEmail" type="text" placeholder="Email">
+    <button onclick="setCookies()">Log me in</button>
+
+    <h2>Cookies</h2>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <script>
+        function setCookies() {
+            //It should set the cookie firstname and email with their values in the input
+            const name = document.getElementById("inputName").value;
+            const email = document.getElementById("inputEmail").value;
+            const date = new Date();
+            date.setDate(date.getDate() + (10*24*60*60*1000));
+            let expiresDate = "expires="+ date.toUTCString();
+            document.cookie = `firstname=${name}; ${expiresDate}; path=/`;
+            document.cookie = `email=${email}; ${expiresDate}; path=/`;
+        };
+
+        function showCookies() {
+            //It should create a DOM p element and append it to the body
+            const p = document.createElement("p");
+            const EMAIL = getCookie("email");
+            const FIRSTNAME = getCookie("firstname")
+            p.innerHTML = `Email: ${EMAIL} - Firstname: ${FIRSTNAME}`;
+            document.body.appendChild(p);
+        };
+
+        function getCookie(name) {
+            //It should return the value of the cookie with the name passed in argument
+            // Split cookie string and get all individual name=value pairs in an array
+            let CookieList = document.cookie.split(';');
+
+            // Loop through the array elements
+            for (let i = 0; i < CookieList.length; i++) {
+                let CookiePair = CookieList[i].split("=");
+
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+
+                if(name === CookiePair[0].trim()) {
+                    //A cookie value cannot contain semicolons, comas or spaces
+                    return decodeURIComponent(CookiePair[1]);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+</html>
