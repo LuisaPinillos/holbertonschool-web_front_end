@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>0-index</title>
 </head>
 <body>
     <h1>Login to the website</h1>
@@ -17,12 +17,14 @@
 
     <script>
         function setCookies() {
+            //It should set the cookie firstname and email with their values in the input
             let name = document.getElementById("inputName").value;
             let email = document.getElementById("inputEmail").value;
             document.cookie = `firstname=${name}`;
             document.cookie = `email=${email}`;
         }
         function showCookies() {
+            //It should create a DOM p element and append it to the body
             const p = document.createElement("p");
             p.innerHTML = `Cookies: ${document.cookie}`;
             document.body.appendChild(p);
