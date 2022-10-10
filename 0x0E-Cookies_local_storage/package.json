@@ -1,0 +1,20 @@
+{
+  "name": "0x0e-cookies_local_storage",
+  "version": "1.0.0",
+  "description": "- Understand how to create cookies using Javascript - Learn how to set specific settings for the cookie - Learn how to read cookies with Javascript - How to use js-cookie for easy cookie manipulation - How to use the browser web storage - The differences between local storage and session storage",
+  "main": "index.js",
+  "dependencies": {
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}
