@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-index</title>
+</head>
+<body>
+    <script>
+        let availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        function addItemToCart(item) {
+            // It adds a key to the local storage of the name of the item, and set the value to true.
+            localStorage.setItem(item, true);
+        };
+
+        function createStore() {
+            // Loop through the array of items, and it creates a list item to add to the ul
+            const list = document.createElement("ul");
+            const body = document.querySelector("body");
+
+            for(x = 0; x < availableItems.length; x++) {
+                let itemList = document.createElement("li");
+                itemList.innerHTML = availableItems[x];
+
+                itemList.addEventListener("click", function() {
+                    addItemToCart(availableItems[x]);
+                });
+
+                list.append(itemList);
+            }
+
+            body.append(list);
+        };
+
+        function displayCart() {
+            // If the local storage contains any item, it should display the message
+            if (localStorage.length > 0){
+                const p = document.createElement("p");
+                const body = document.querySelector("body");
+                p.innerHTML = `You previously had ${localStorage.length} items in your cart`;
+                body.append(p);
+            }
+        };
+
+        if (typeof(Storage) !== "undefined") {
+            // Check browser support for localStorage and sessionStorage
+            // Code for localStorage/sessionStorage.
+            createStore();
+            displayCart();
+        } else {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one")
+        }
+
+    </script>
+</body>
+</html>
