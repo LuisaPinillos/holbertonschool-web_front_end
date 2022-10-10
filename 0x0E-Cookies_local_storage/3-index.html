@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-index</title>
+</head>
+<body>
+    <div id="loginForm">
+        <h1>Login to the website</h1>
+        <input id="inputName" type="text" placeholder="Firstname">
+        <input id="inputEmail" type="text" placeholder="Email">
+        <button id="ButtonLogin" onclick="setCookies()">Log me in</button>
+    </div>
+
+    <script>
+        function setCookies() {
+            //It should set the cookie firstname and email with their values in the input
+            const name = document.getElementById("inputName").value;
+            const email = document.getElementById("inputEmail").value;
+            const date = new Date();
+            date.setDate(date.getDate() + (10*24*60*60*1000));
+            let expiresDate = "expires="+ date.toUTCString();
+            document.cookie = `firstname=${name}; ${expiresDate}; path=/`;
+            document.cookie = `email=${email}; ${expiresDate}; path=/`;
+        };
+
+        function showCookies() {
+            //It should create a DOM p element and append it to the body
+            const p = document.createElement("p");
+            const EMAIL = getCookie("email");
+            const FIRSTNAME = getCookie("firstname")
+            p.innerHTML = `Email: ${EMAIL} - Firstname: ${FIRSTNAME}`;
+            document.body.appendChild(p);
+        };
+
+        function getCookie(name) {
+            //It should return the value of the cookie with the name passed in argument
+            //Split cookie string and get all individual name=value pairs in an array
+            let CookieList = document.cookie.split(';');
+
+            //Loop through the array elements
+            for (let i = 0; i < CookieList.length; i++) {
+                let CookiePair = CookieList[i].split("=");
+
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+
+                if(name === CookiePair[0].trim()) {
+                    //A cookie value cannot contain semicolons, comas or spaces
+                    return decodeURIComponent(CookiePair[1]);
+                }
+            }
+            return "";
+        };
+
+        function showForm(){
+            //It should show the form and remove the Welcome message if it exists
+            document.getElementById("loginForm").style.display = "block";
+        };
+
+        function hideForm() {
+            //It should hide the form
+            document.getElementById("loginForm").style.display = "none";
+        };
+
+        function deleteCookiesAndShowForm() {
+            //It should remove the two cookies and show the form
+            document.cookie = "firstName=; expires=Thu, 01 Sep 2022 00:00:00 UTC; path=/";
+            document.cookie = "email=; expires=Thu, 01 Sep 2022 00:00:00 UTC; path=/";
+            showForm();
+        };
+
+        function showWelcomeMessageOrForm() {
+            document.getElementById("ButtonLogin").addEventListener("click", function() {
+                if (getCookie("email") && getCookie("firstname")) {
+                    hideForm();
+
+                    const welcome = document.createElement("h1");
+                    const FIRSTNAME = getCookie("firstname");
+                    const a = document.createElement("a");
+                    a.innerHTML = "(logout)";
+                    a.style.cssText = "font-weight: normal; font-style: italic; margin-left: 10px;";
+                    welcome.innerHTML = `Welcome ${FIRSTNAME} ${a}`;
+
+                    a.addEventListener("click", deleteCookiesAndShowForm);
+                    document.querySelector("body").append(welcome);
+                }
+                else {
+                    showForm();
+                }
+            })
+        }
+    </script>
+</body>
+</html>
